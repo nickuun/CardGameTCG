@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ethfgjr0w3jr"]
+
+[ext_resource type="Texture2D" uid="uid://n35s60pas62n" path="res://Assets/Sprites/UI/Player/Mana/Colourless/ColourlessFilled.png" id="1_cy6gp"]
+[ext_resource type="Texture2D" uid="uid://cpjy6ewf3op32" path="res://Assets/Sprites/UI/Player/Mana/Colourless/ColourlessEmpty.png" id="2_qgdhj"]
+
+[node name="ManaDisplay" type="Node2D"]
+texture_filter = 1
+
+[node name="Empty" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_right = 26.0
+offset_bottom = 26.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_qgdhj")
+stretch_mode = 1
+
+[node name="Filled" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_right = 26.0
+offset_bottom = 26.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_cy6gp")
+stretch_mode = 1

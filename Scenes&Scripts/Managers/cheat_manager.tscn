@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcb10wlqbreaw"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/Managers/CheatManager.gd" id="1_545vv"]
+
+[node name="CheatManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_545vv")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 523.0
+offset_bottom = 44.0
+text = "Cheating Words"

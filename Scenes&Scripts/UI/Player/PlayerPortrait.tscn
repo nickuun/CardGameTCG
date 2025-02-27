@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3ao65dn0j143"]
+
+[ext_resource type="Texture2D" uid="uid://c0dwu06e1f2p8" path="res://Assets/Sprites/Player/Heros/PlayerHeroBorder.png" id="1_f64iy"]
+[ext_resource type="Texture2D" uid="uid://ccklplqe348tj" path="res://Assets/Sprites/UI/Player/PlayerName/PlayerName.png" id="2_jt2q7"]
+[ext_resource type="FontFile" uid="uid://brchau0u3c8nw" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="3_3ypr0"]
+[ext_resource type="Texture2D" uid="uid://ci0iuwlsyk82j" path="res://Assets/Sprites/Player/Healthbar/PlayerHealthbarUnder.png" id="4_dteqr"]
+[ext_resource type="Texture2D" uid="uid://cohksu1qlig2h" path="res://Assets/Sprites/Player/Healthbar/PlayerHealthbarProgressbar.png" id="5_ux7md"]
+[ext_resource type="Texture2D" uid="uid://c04i6gb8x7n5x" path="res://Assets/Sprites/Player/Healthbar/PlayerHealthbarOver.png" id="6_pkjcj"]
+[ext_resource type="FontFile" uid="uid://bdqdvgcjywjuo" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_7u72e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t83gp"]
+radius = 57.0088
+
+[node name="PlayerPortrait" type="Area2D"]
+texture_filter = 1
+collision_layer = 5
+collision_mask = 5
+
+[node name="PlayerHeroBorder" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 112.0
+offset_bottom = 111.0
+texture = ExtResource("1_f64iy")
+
+[node name="PlayerNameDisplay" type="TextureRect" parent="."]
+offset_left = 3.0
+offset_top = 132.0
+offset_right = 159.0
+offset_bottom = 164.0
+texture = ExtResource("2_jt2q7")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 138.0
+offset_right = 154.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(72, 8)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3ypr0")
+theme_override_font_sizes/font_size = 18
+text = "GingerLightning"
+horizontal_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Healthbar" type="Node2D" parent="."]
+position = Vector2(24, 104)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Healthbar"]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("4_dteqr")
+texture_progress = ExtResource("5_ux7md")
+
+[node name="HealthbarOverSprite" type="TextureRect" parent="Healthbar"]
+offset_left = -23.0
+offset_top = -5.0
+offset_right = 142.0
+offset_bottom = 35.0
+texture = ExtResource("6_pkjcj")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Healthbar"]
+offset_left = -25.0
+offset_top = -1.0
+offset_right = 15.0
+offset_bottom = 22.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_7u72e")
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(60, 56)
+shape = SubResource("CircleShape2D_t83gp")

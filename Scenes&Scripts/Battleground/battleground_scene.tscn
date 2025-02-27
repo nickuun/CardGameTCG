@@ -1,0 +1,122 @@
+[gd_scene load_steps=19 format=3 uid="uid://bavgboo2qg8vq"]
+
+[ext_resource type="PackedScene" uid="uid://d2vlwcbpo2tkl" path="res://Scenes&Scripts/Tilemaps/battlegreound_tilemap.tscn" id="1_ljl2t"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Battleground/battleground_scene.gd" id="1_uxmb2"]
+[ext_resource type="PackedScene" uid="uid://cj8eapp4so3ub" path="res://Scenes&Scripts/Cards/Card/card.tscn" id="2_wt3l7"]
+[ext_resource type="PackedScene" uid="uid://dcb10wlqbreaw" path="res://Scenes&Scripts/Managers/cheat_manager.tscn" id="4_v4vkh"]
+[ext_resource type="PackedScene" uid="uid://b056b121xw820" path="res://Scenes&Scripts/Managers/drag_manager.tscn" id="5_smh5e"]
+[ext_resource type="PackedScene" uid="uid://bk8yxgt2kwogk" path="res://Scenes&Scripts/Managers/deck_manager.tscn" id="6_gdrdj"]
+[ext_resource type="PackedScene" uid="uid://diu4w33dusa2d" path="res://Scenes&Scripts/Managers/hand_manager.tscn" id="7_mm7hl"]
+[ext_resource type="PackedScene" uid="uid://74twv5lkr5d" path="res://Scenes&Scripts/Managers/card_manager.tscn" id="8_f640m"]
+[ext_resource type="PackedScene" uid="uid://byr2u0gaq6yiw" path="res://Scenes&Scripts/Managers/card_id_manager.tscn" id="9_y1wc3"]
+[ext_resource type="PackedScene" uid="uid://11y2ui0ayfpg" path="res://Scenes&Scripts/Managers/ZoneManager/zone_manager.tscn" id="10_08u0q"]
+[ext_resource type="PackedScene" uid="uid://chtbprnoxvjxu" path="res://Scenes&Scripts/Managers/battle_manager.tscn" id="11_uy8ae"]
+[ext_resource type="PackedScene" uid="uid://b3juhaepsg153" path="res://Scenes&Scripts/Managers/player_manager.tscn" id="12_20tsm"]
+[ext_resource type="PackedScene" uid="uid://ethfgjr0w3jr" path="res://Scenes&Scripts/UI/Player/Mana/mana_display.tscn" id="13_nby0t"]
+[ext_resource type="PackedScene" uid="uid://c3ao65dn0j143" path="res://Scenes&Scripts/UI/Player/PlayerPortrait.tscn" id="13_rif6x"]
+[ext_resource type="PackedScene" uid="uid://blhafme7bkerx" path="res://Scenes&Scripts/Managers/ability_manager.tscn" id="14_fteyl"]
+[ext_resource type="PackedScene" uid="uid://cti4t2l22kqmo" path="res://Scenes&Scripts/Managers/graveyard_manager.tscn" id="15_q8quo"]
+[ext_resource type="PackedScene" uid="uid://n4obusigydn" path="res://Scenes&Scripts/Cards/CardVisuals/card_visuals.tscn" id="16_me55n"]
+[ext_resource type="PackedScene" uid="uid://ckbnmuitp3461" path="res://Scenes&Scripts/Managers/turn_manager.tscn" id="17_8inkq"]
+
+[node name="BattlegroundScene" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_uxmb2")
+
+[node name="BattlegreoundTilemap" parent="." instance=ExtResource("1_ljl2t")]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="CheatManager" parent="Managers" instance=ExtResource("4_v4vkh")]
+z_index = 10
+offset_left = 7.0
+offset_top = 1030.0
+offset_right = 7.0
+offset_bottom = 1030.0
+card_manager = NodePath("../CardManager")
+
+[node name="DragManager" parent="Managers" instance=ExtResource("5_smh5e")]
+zone_manager = NodePath("../ZoneManager")
+hand_manager = NodePath("../HandManager")
+battle_manager = NodePath("../BattleManager")
+card_preview = NodePath("../../CardPreview")
+player_manager = NodePath("../PlayerManager")
+turn_manager = NodePath("../TurnManager")
+
+[node name="DeckManager" parent="Managers" instance=ExtResource("6_gdrdj")]
+
+[node name="HandManager" parent="Managers" instance=ExtResource("7_mm7hl")]
+
+[node name="CardManager" parent="Managers" instance=ExtResource("8_f640m")]
+deck_manager_path = NodePath("../DeckManager")
+hand_manager_path = NodePath("../HandManager")
+card_id_manager_path = NodePath("../CardIDManager")
+zone_manager_path = NodePath("../ZoneManager")
+battle_manager_path = NodePath("../BattleManager")
+player_manager_path = NodePath("../PlayerManager")
+
+[node name="CardIDManager" parent="Managers" instance=ExtResource("9_y1wc3")]
+
+[node name="ZoneManager" parent="Managers" instance=ExtResource("10_08u0q")]
+
+[node name="BattleManager" parent="Managers" instance=ExtResource("11_uy8ae")]
+zone_manager_path = NodePath("../ZoneManager")
+hand_manager_path = NodePath("../HandManager")
+player_manager_path = NodePath("../PlayerManager")
+graveyard_manager_path = NodePath("../GraveyardManager")
+
+[node name="PlayerManager" parent="Managers" instance=ExtResource("12_20tsm")]
+player_healthbar = NodePath("PlayerPortrait/Healthbar/TextureProgressBar")
+opponent_healthbar = NodePath("OpponentPortrait/Healthbar/TextureProgressBar")
+player_manabar = NodePath("ManaDisplay")
+opponent_manabar = NodePath("OpponentManaDisplay")
+
+[node name="PlayerPortrait" parent="Managers/PlayerManager" instance=ExtResource("13_rif6x")]
+position = Vector2(23, 904)
+
+[node name="OpponentPortrait" parent="Managers/PlayerManager" instance=ExtResource("13_rif6x")]
+position = Vector2(1746, 21)
+
+[node name="PlayerHeroBorder" parent="Managers/PlayerManager/OpponentPortrait" index="0"]
+offset_left = 38.0
+offset_top = -3.0
+offset_right = 141.0
+offset_bottom = 106.0
+
+[node name="CollisionShape2D" parent="Managers/PlayerManager/OpponentPortrait" index="4"]
+position = Vector2(89, 51)
+
+[node name="ManaDisplay" parent="Managers/PlayerManager" instance=ExtResource("13_nby0t")]
+position = Vector2(133, 962)
+
+[node name="OpponentManaDisplay" parent="Managers/PlayerManager" instance=ExtResource("13_nby0t")]
+position = Vector2(1784, 9)
+scale = Vector2(-1, 1)
+
+[node name="AbilityManager" parent="Managers" instance=ExtResource("14_fteyl")]
+player_manager = NodePath("../PlayerManager")
+
+[node name="GraveyardManager" parent="Managers" instance=ExtResource("15_q8quo")]
+card_scene = ExtResource("2_wt3l7")
+
+[node name="TurnManager" parent="Managers" instance=ExtResource("17_8inkq")]
+card_manager_path = NodePath("../CardManager")
+deck_manager_path = NodePath("../DeckManager")
+player_manager_path = NodePath("../PlayerManager")
+
+[node name="Button" type="Button" parent="Managers/TurnManager"]
+offset_left = 1789.0
+offset_top = 513.0
+offset_right = 1863.0
+offset_bottom = 544.0
+text = "EndTurn"
+
+[node name="CardPreview" parent="." instance=ExtResource("16_me55n")]
+visible = false
+position = Vector2(280, 524)
+scale = Vector2(3, 3)
+
+[connection signal="button_up" from="Managers/TurnManager/Button" to="Managers/TurnManager" method="on_end_turn_pressed"]
+
+[editable path="Managers/PlayerManager/PlayerPortrait"]
+[editable path="Managers/PlayerManager/OpponentPortrait"]

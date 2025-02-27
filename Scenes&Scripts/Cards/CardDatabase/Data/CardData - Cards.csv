@@ -1,0 +1,12 @@
+flame_imp_001,Flame Imp,Creature,Burn your enemies with fire.,3,2,3,on_played:heal_all_allies
+fireball_002,Fireball,Spell,Deal 1 damage to a single target.,-,-,1,on_played:heal_all_allies|on_death:deal_damage_to_hero
+healing_touch_003,Healing Touch,Spell,Restore 2 health to target creature or hero.,-,-,2,on_cast:buff_hero
+thornhide_protector_004,Thornhide Protector,Creature,When Thornhide Protector is attacked it gains +0/+2 until the end of the turn.,3,2,2,
+briarclaw_shaman_005,Briarclaw Shaman,Creature,Pay (1) - tap: Target creature gets +1/+1 until the end of the turn,2,2,2,
+mosshide_bear_006,Mosshide Bear,Creature,When Mosshide Bear attacks it gains Trample until the end of the turn.,4,2,3,
+ancient_stag_007,Ancient Stag,Creature,At the start of your turn gain 1 life.,4,4,4,
+wilden_domain_008,Wilden Domain,Enchantment,Whenever an opponent plays a creature create a 2/2 green Wolf creature token.,-,-,3,
+vinegrasp_aura_009,Vinegrasp Aura,Enchantment,Enchant creature. Enchanted creature gets +3/+3.,-,-,2,
+call_of_the_ancients010,Call of the Ancients,Enchantment,At the beginning of your turn you may pay (3) to  create a 5/5 green creature token.,-,-,5,
+impish_trickster_011,Impish Trickster,Creature,When another creature enters the battlefield under your control gain +1/+0.,1,1,1,
+lupine_curse_012,Lupine Curse,Enchantment,Curse a minion turning it into a 2/2 wolf.,-,-,4,

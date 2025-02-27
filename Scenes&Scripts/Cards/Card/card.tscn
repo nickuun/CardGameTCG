@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj8eapp4so3ub"]
+
+[ext_resource type="PackedScene" uid="uid://n4obusigydn" path="res://Scenes&Scripts/Cards/CardVisuals/card_visuals.tscn" id="1_pbgmo"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Cards/Card/card.gd" id="1_qoqtu"]
+[ext_resource type="PackedScene" uid="uid://cp7w52gq01k5t" path="res://Scenes&Scripts/Cards/CardLogic/card_logic.tscn" id="3_nc32l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snuqp"]
+size = Vector2(107, 159)
+
+[node name="Card" type="Node2D" groups=["cards"]]
+script = ExtResource("1_qoqtu")
+
+[node name="CardVisuals" parent="." instance=ExtResource("1_pbgmo")]
+
+[node name="CardLogic" parent="." instance=ExtResource("3_nc32l")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_snuqp")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://11y2ui0ayfpg"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/Managers/ZoneManager/zone_manager.gd" id="1_kgpjf"]
+[ext_resource type="PackedScene" uid="uid://bmyjd71uuhku3" path="res://Scenes&Scripts/Managers/ZoneManager/zone.tscn" id="1_ucpmm"]
+
+[node name="ZoneManager" type="Node2D"]
+script = ExtResource("1_kgpjf")
+
+[node name="Opponent Spell Zone" parent="." groups=["zones"] instance=ExtResource("1_ucpmm")]
+position = Vector2(897, 169)
+collision_layer = 2
+collision_mask = 2
+zone_name = "Opponent Spell Zone"
+is_creature_zone = false
+
+[node name="Opponent Monster Zone" parent="." groups=["zones"] instance=ExtResource("1_ucpmm")]
+position = Vector2(897, 389)
+collision_layer = 2
+collision_mask = 2
+zone_name = "Opponent Monster Zone"
+
+[node name="Player Monster Zone" parent="." groups=["zones"] instance=ExtResource("1_ucpmm")]
+position = Vector2(897, 663)
+collision_layer = 2
+collision_mask = 2
+zone_name = "Player Monster Zone"
+
+[node name="Player Spell Zone" parent="." groups=["zones"] instance=ExtResource("1_ucpmm")]
+position = Vector2(897, 899)
+collision_layer = 2
+collision_mask = 2
+zone_name = "Player Spell Zone"
+is_creature_zone = false

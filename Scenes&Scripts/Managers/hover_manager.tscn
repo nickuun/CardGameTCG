@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3fcc5j247jmx"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/Managers/hover_manager.gd" id="1_wisga"]
+
+[node name="HoverManager" type="Node2D" groups=["HoverManager"]]
+script = ExtResource("1_wisga")

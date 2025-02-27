@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cti4t2l22kqmo"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/Managers/graveyard_manager.gd" id="1_ajx6c"]
+[ext_resource type="Texture2D" uid="uid://0gh0oxil77xo" path="res://Assets/Sprites/Banners/YourTurnBanner.png" id="2_yhcty"]
+
+[node name="GraveyardManager" type="Node2D" groups=["graveyard_ui"]]
+texture_filter = 1
+script = ExtResource("1_ajx6c")
+graveyard_view = NodePath("GraveyardView")
+graveyard_pile = NodePath("GraveyardPile")
+scroll_left_button = NodePath("GraveyardView/ScrollLeft")
+scroll_right_button = NodePath("GraveyardView/ScrollRight")
+close_button = NodePath("GraveyardView/CloseButton")
+
+[node name="GraveyardPile" type="Button" parent="." groups=["graveyard_ui"]]
+offset_left = 105.0
+offset_top = 124.0
+offset_right = 222.0
+offset_bottom = 155.0
+text = "GraveyardPile"
+
+[node name="GraveyardView" type="Control" parent="." groups=["graveyard_ui"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 497.0
+offset_top = 274.0
+offset_right = 1093.0
+offset_bottom = 704.0
+
+[node name="ScrollLeft" type="Button" parent="GraveyardView" groups=["graveyard_ui"]]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 195.0
+offset_right = 861.0
+offset_bottom = 226.0
+text = "Next"
+
+[node name="ScrollRight" type="Button" parent="GraveyardView" groups=["graveyard_ui"]]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 180.0
+offset_right = 11.0
+offset_bottom = 211.0
+text = "Preev"
+
+[node name="CloseButton" type="Button" parent="GraveyardView" groups=["graveyard_ui"]]
+layout_mode = 0
+offset_left = 564.0
+offset_top = -51.0
+offset_right = 609.0
+offset_bottom = -20.0
+text = "CloseButton"
+
+[node name="TextureRect" type="TextureRect" parent="GraveyardView" groups=["graveyard_ui"]]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 17.0
+offset_right = 506.0
+offset_bottom = 193.0
+texture = ExtResource("2_yhcty")
