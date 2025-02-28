@@ -111,7 +111,7 @@ offset_right = 1863.0
 offset_bottom = 544.0
 text = "EndTurn"
 
-[node name="CardPreview" parent="." instance=ExtResource("16_me55n")]
+[node name="CardPreview" parent="." groups=["CardPreview"] instance=ExtResource("16_me55n")]
 visible = false
 position = Vector2(280, 524)
 scale = Vector2(3, 3)

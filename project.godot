@@ -33,6 +33,7 @@ window/vsync/vsync_mode=0
 cards=""
 zones=""
 AbilityManager=""
+CardPreview=""
 
 [rendering]
 

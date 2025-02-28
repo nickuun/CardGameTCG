@@ -37,7 +37,11 @@ func attempt_attack(target_card):
 	if not attacking_card:
 		print("❌ No attacker selected!")
 		return
-
+	
+	if attacking_card.get_meta("exhausted") == true:
+		print("❌ Attacker is exhausted!")
+		return
+	
 	# Ensure we are attacking an opponent's monster
 	var attacker_zone = attacking_card.get_meta("current_zone")
 	var target_zone = target_card.get_meta("current_zone")
@@ -63,10 +67,12 @@ func apply_combat(attacker, defender):
 	# Apply damage
 	attacker_health -= defender_attack
 	defender_health -= attacker_attack
-
+	
 	# Play animations
 	attacker.play_attack_animation()
 	defender.play_defend_animation()
+	
+	attacker.set_meta("exhausted", true)
 
 	# Check if attacker dies
 	if attacker_health <= 0:
@@ -87,6 +93,8 @@ func apply_combat(attacker, defender):
 	# Update health stats on cards
 	attacker.set_meta("card_defense", str(attacker_health))
 	defender.set_meta("card_defense", str(defender_health))
+	attacker.update_card_stat_visuals()
+	defender.update_card_stat_visuals()
 
 func direct_attack():
 	if not attacking_card:

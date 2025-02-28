@@ -1,12 +1,27 @@
-flame_imp_001,Flame Imp,Creature,Burn your enemies with fire.,3,2,3,on_played:heal_all_allies
-fireball_002,Fireball,Spell,Deal 1 damage to a single target.,-,-,1,on_played:heal_all_allies|on_death:deal_damage_to_hero
-healing_touch_003,Healing Touch,Spell,Restore 2 health to target creature or hero.,-,-,2,on_cast:buff_hero
-thornhide_protector_004,Thornhide Protector,Creature,When Thornhide Protector is attacked it gains +0/+2 until the end of the turn.,3,2,2,
-briarclaw_shaman_005,Briarclaw Shaman,Creature,Pay (1) - tap: Target creature gets +1/+1 until the end of the turn,2,2,2,
-mosshide_bear_006,Mosshide Bear,Creature,When Mosshide Bear attacks it gains Trample until the end of the turn.,4,2,3,
-ancient_stag_007,Ancient Stag,Creature,At the start of your turn gain 1 life.,4,4,4,
-wilden_domain_008,Wilden Domain,Enchantment,Whenever an opponent plays a creature create a 2/2 green Wolf creature token.,-,-,3,
-vinegrasp_aura_009,Vinegrasp Aura,Enchantment,Enchant creature. Enchanted creature gets +3/+3.,-,-,2,
-call_of_the_ancients010,Call of the Ancients,Enchantment,At the beginning of your turn you may pay (3) to  create a 5/5 green creature token.,-,-,5,
-impish_trickster_011,Impish Trickster,Creature,When another creature enters the battlefield under your control gain +1/+0.,1,1,1,
-lupine_curse_012,Lupine Curse,Enchantment,Curse a minion turning it into a 2/2 wolf.,-,-,4,
+flame_imp_001,Flame Imp,Creature,,3,2,3,on_played:heal_all_allies
+fireball_002,Fireball,Spell,Deal 1 damage to a target.,-,-,1,on_played:heal_all_allies|on_death:deal_damage_to_hero
+healing_touch_003,Healing Touch,Spell,Give 2 health to a target.,-,-,2,on_cast:buff_hero
+thornhide_protector_004,Thornhide Protector,Creature,Resilience: Gain +0/+2.,3,2,2,
+briarclaw_shaman_005,Briarclaw Shaman,Creature,Active(1): Give target +1/+1.,2,2,2,
+mosshide_bear_006,Mosshide Bear,Creature,Lunge: Gain +1/+1.,3,2,3,
+ancient_stag_007,Ancient Stag,Creature,Awaken: Gain 1 life.,4,4,4,
+wilden_domain_008,Wilden Domain,Enchantment,Dread: Create a 2/2 Wolf.,-,-,3,
+vinegrasp_aura_009,Vinegrasp Aura,Enchantment,Enchant creature. Target gets +3/+3.,-,-,2,
+call_of_the_ancients010,Call of the Ancients,Enchantment,Active(3): Create a 5/5 creature.,-,-,5,
+impish_trickster_011,Impish Trickster,Creature,Surge: +1/+0.,1,1,1,on_death:deal_damage_to_hero(2)
+lupine_curse_012,Lupine Curse,Enchantment,Turn a creature into a 2/2 wolf.,-,-,4,
+13,Ashen Phoenix,Creature,Last Breath: Return this to your hand.,2,2,3,
+14,Verdant Behemoth,Creature,Enduring,2,3,2,
+15,Ancient Grovekeeper,Creature,Awaken: Both players gain 1 life.,1,4,3,
+16,Dark Pact,Spell,Draw 2 cards. Lose 3 life.,-,-,2,
+17,Battle Frenzy,Spell,Your creatures gain +1 Attack this turn.,-,-,3,
+18,Scorching Gale,Spell,All enemies take 1 damage.,-,-,3,
+19,Nature’s Resilience,Enchantment,Give 2 creatures +1 Defense permanently.,-,-,2,
+20,Frozen Winds,Creature,Target 2 creatures: They are exhuasted next turn.,-,-,3,
+21,Mystic Tome,Spell,Draw 2 cards.,-,-,2,
+22,Unstable Element,Spell,"Draw a card, then discard a card.",-,-,1,
+23,Flameborn Rager,Creature,Lunge: Gain +1/0.,3,2,3,
+24,Celestial Vanguard,Creature,Strike: Restore 1 Health to your hero.,3,3,4,
+25,Stormcaller Mage,Creature,Warcry: Draw a card.,3,2,4,
+26,Hunter's Instinct,Spell,Draw a card for each creature your opponent controls.,-,-,4,
+27,Greedy Cutpurse,Creature,Glory: Gain 1 gold.,1,3,3,

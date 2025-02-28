@@ -18,10 +18,12 @@ func set_card_data(title: String, description: String, attack: String, defense: 
 	$CardDescriptionLabel.text = description
 	if defense != "-":
 		$DefenceLabel.text = defense
+		$DefenceLabel.show()
 	else:
 		$DefenceLabel.hide()
 	if attack != "-":
 		$AttackLabel.text = attack
+		$AttackLabel.show()
 	else:
 		$AttackLabel.hide()
 	
@@ -37,3 +39,11 @@ func set_card_data(title: String, description: String, attack: String, defense: 
 
 	#icon_sprite.play(icon)
 	#hero_art.play(title)
+
+func update_card_stat_visuals():
+	$DefenceLabel.text = self.get_parent().get_meta("card_defense")
+	if $DefenceLabel.visible == false:
+		$DefenceLabel.show()
+	$AttackLabel.text = self.get_parent().get_meta("card_attack")
+	if $AttackLabel.visible == false:
+		$AttackLabel.show()

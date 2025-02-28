@@ -27,11 +27,11 @@ func _ready():
 	#]
 	var desired_player_cards = [
 		"thornhide_protector_004",  # ID from CSV row
-		"fireball_002",
+		"mosshide_bear_006",
 		"briarclaw_shaman_005",
-		"call_of_the_ancients010",
-		"impish_trickster_011",
-		"impish_trickster_011"
+		"mosshide_bear_006",
+		"mosshide_bear_006",
+		"mosshide_bear_006"
 	]
 	
 	for card_id in desired_player_cards:
@@ -48,9 +48,9 @@ func _ready():
 func sample_opponent_deck():
 
 	var desired_opponent_cards = [
-		"thornhide_protector_004",
-		"briarclaw_shaman_005",  
-		"mosshide_bear_006"  
+		"impish_trickster_011",
+		"impish_trickster_011",  
+		"impish_trickster_011" 
 	]
 
 	var sample_opponent_deck = []

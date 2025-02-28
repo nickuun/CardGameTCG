@@ -18,6 +18,7 @@ signal drag_started
 signal drag_ended
 
 func _ready():
+	set_exhausted(false)
 	logic.setup(self)  # Let the logic script reference this card
 
 func set_card(id, title: String, type: String,  description: String, attack: String, defense: String, cost: String, abilities: Array = []):
@@ -63,9 +64,9 @@ func play_attack_animation():
 	var tween = get_tree().create_tween()
 	var start_pos = position
 	var attack_pos = position + Vector2(20, 0)  # Slight forward movement
-	tween.tween_property(self, "position", attack_pos, 0.2)
-	await get_tree().create_timer(0.2).timeout
-	tween.tween_property(self, "position", start_pos, 0.2)
+	#tween.tween_property(self, "position", attack_pos, 0.2)
+	#await get_tree().create_timer(0.2).timeout
+	#tween.tween_property(self, "position", start_pos, 0.2)
 
 func play_defend_animation():
 	print("🛡️", name, "defends!")
@@ -92,7 +93,13 @@ func get_card_data() -> Dictionary:
 	return {
 		"title": card_title,
 		"description": card_description,
-		"attack": card_attack,
-		"defense": card_defense,
+		"attack": self.get_meta("card_attack"),
+		"defense": self.get_meta("card_defense"),
 		"cost": card_mana_cost
 	}
+
+func set_exhausted(ex: bool = true):
+	set_meta("exhausted", ex)
+
+func update_card_stat_visuals():
+	$CardVisuals.update_card_stat_visuals()

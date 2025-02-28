@@ -2,10 +2,10 @@ extends Node
 
 @export var player_health: int = 20
 @export var opponent_health: int = 20
-@export var player_mana: int = 10
-@export var player_max_mana: int = 10
-@export var opponent_mana: int = 10
-@export var opponent_max_mana: int = 10
+@export var player_mana: int = 1
+@export var player_max_mana: int = 1
+@export var opponent_mana: int = 1
+@export var opponent_max_mana: int = 1
 @export var player_name: String = "Player"
 @export var opponent_name: String = "Opponent"
 
