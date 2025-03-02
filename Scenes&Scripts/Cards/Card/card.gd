@@ -91,11 +91,11 @@ func trigger_ability(trigger_type):
 
 func get_card_data() -> Dictionary:
 	return {
-		"title": card_title,
-		"description": card_description,
+		"title": self.get_meta("card_title"),
+		"description": self.get_meta("card_description"),
 		"attack": self.get_meta("card_attack"),
 		"defense": self.get_meta("card_defense"),
-		"cost": card_mana_cost
+		"cost": self.get_meta("card_mana_cost"),
 	}
 
 func set_exhausted(ex: bool = true):

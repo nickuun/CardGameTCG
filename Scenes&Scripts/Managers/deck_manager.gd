@@ -26,12 +26,11 @@ func _ready():
 		 #]}
 	#]
 	var desired_player_cards = [
-		"thornhide_protector_004",  # ID from CSV row
+		"vinegrasp_aura_009",  # ID from CSV row
 		"mosshide_bear_006",
 		"briarclaw_shaman_005",
-		"mosshide_bear_006",
-		"mosshide_bear_006",
-		"mosshide_bear_006"
+		"impish_trickster_011",
+		"lupine_curse_012",
 	]
 	
 	for card_id in desired_player_cards:

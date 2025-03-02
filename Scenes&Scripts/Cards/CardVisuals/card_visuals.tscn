@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://n4obusigydn"]
+[gd_scene load_steps=30 format=3 uid="uid://n4obusigydn"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/Cards/CardVisuals/card_visuals.gd" id="1_bj7dw"]
 [ext_resource type="Texture2D" uid="uid://dwo3y6ej5afg5" path="res://Assets/Sprites/Cards/Bases/BlankCardColourlessTemplate.png" id="1_ifb1p"]
@@ -6,16 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://n35s60pas62n" path="res://Assets/Sprites/UI/Player/Mana/Colourless/ColourlessFilled.png" id="2_pqi8j"]
 [ext_resource type="FontFile" uid="uid://bdqdvgcjywjuo" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_alnvu"]
 [ext_resource type="Texture2D" uid="uid://cfyi413hoka6x" path="res://Assets/Sprites/Cards/Heros/008.png" id="3_hk8qv"]
+[ext_resource type="Texture2D" uid="uid://dms6x1riqh1jw" path="res://Assets/Sprites/Cards/Heros/15.png" id="4_5y0wc"]
 [ext_resource type="Texture2D" uid="uid://ce1y33s44h8yy" path="res://Assets/Sprites/Cards/Heros/006.png" id="4_j0gh8"]
 [ext_resource type="Texture2D" uid="uid://c878nekd64n6c" path="res://Assets/Sprites/Cards/Heros/003.png" id="5_p6qjc"]
+[ext_resource type="Texture2D" uid="uid://ei5xy4lqyoi7" path="res://Assets/Sprites/Cards/Heros/013.png" id="5_x2lex"]
 [ext_resource type="FontFile" uid="uid://f1ltt148ytjw" path="res://Assets/Fonts/Kenney Pixel.ttf" id="6_llvgy"]
 [ext_resource type="Texture2D" uid="uid://kpp46u4g7uom" path="res://Assets/Sprites/Cards/Heros/005.png" id="7_2of0j"]
+[ext_resource type="Texture2D" uid="uid://blpbs7pws3amm" path="res://Assets/Sprites/Cards/Heros/17.png" id="7_uqsnn"]
+[ext_resource type="Texture2D" uid="uid://ckc6ol3bdyad2" path="res://Assets/Sprites/Cards/Heros/024.png" id="8_53v8d"]
 [ext_resource type="Texture2D" uid="uid://dclul508syovk" path="res://Assets/Sprites/Cards/Heros/010.png" id="8_brvdk"]
 [ext_resource type="Texture2D" uid="uid://pb8bwnwnon2y" path="res://Assets/Sprites/Cards/Heros/011.png" id="9_5m1w2"]
 [ext_resource type="Texture2D" uid="uid://cbv8t5winba60" path="res://Assets/Sprites/Cards/Heros/009.png" id="10_0qarw"]
+[ext_resource type="Texture2D" uid="uid://bb57p21v85h1q" path="res://Assets/Sprites/Cards/Heros/16.png" id="11_emnmg"]
 [ext_resource type="Texture2D" uid="uid://yohlwu8mjef1" path="res://Assets/Sprites/Cards/Heros/004.png" id="11_laddi"]
 [ext_resource type="Texture2D" uid="uid://bk41j4ee1r7i3" path="res://Assets/Sprites/Cards/Heros/007.png" id="12_2hyn6"]
 [ext_resource type="Texture2D" uid="uid://d2euiaeqctyyq" path="res://Assets/Sprites/Cards/Heros/002.png" id="13_7qphc"]
+[ext_resource type="Texture2D" uid="uid://reipyjos8x4v" path="res://Assets/Sprites/Cards/Heros/23.png" id="13_w8e7n"]
+[ext_resource type="Texture2D" uid="uid://cmiua7a51amte" path="res://Assets/Sprites/Cards/Heros/018.png" id="14_map61"]
+[ext_resource type="Texture2D" uid="uid://c3iecstuorf8q" path="res://Assets/Sprites/Cards/Heros/21.png" id="18_7o0ck"]
+[ext_resource type="Texture2D" uid="uid://cblxv0gumha1r" path="res://Assets/Sprites/Cards/Heros/19.png" id="19_2wc0v"]
+[ext_resource type="Texture2D" uid="uid://cwd4tlsas8r3y" path="res://Assets/Sprites/Cards/Heros/22.png" id="22_ptosf"]
+[ext_resource type="Texture2D" uid="uid://bm2s7x2gkcynq" path="res://Assets/Sprites/Cards/Heros/14.png" id="23_5omts"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_41336"]
 animations = [{
@@ -32,10 +43,34 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_5y0wc")
+}],
+"loop": true,
+"name": &"Ancient Grovekeeper",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_hk8qv")
 }],
 "loop": true,
 "name": &"Ancient Stag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_x2lex")
+}],
+"loop": true,
+"name": &"Ashen Phoenix",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uqsnn")
+}],
+"loop": true,
+"name": &"Battle Frenzy",
 "speed": 5.0
 }, {
 "frames": [{
@@ -56,6 +91,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_53v8d")
+}],
+"loop": true,
+"name": &"Celestial Vanguard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_emnmg")
+}],
+"loop": true,
+"name": &"Dark Pact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_k3nc5")
 }],
 "loop": true,
@@ -68,6 +119,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"Flame Imp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_w8e7n")
+}],
+"loop": true,
+"name": &"Flameborn Rager",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Frozen Winds",
 "speed": 5.0
 }, {
 "frames": [{
@@ -104,10 +168,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("18_7o0ck")
+}],
+"loop": true,
+"name": &"Mystic Tome",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_2wc0v")
+}],
+"loop": true,
+"name": &"Nature’s Resilience",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_map61")
+}],
+"loop": true,
+"name": &"Scorching Gale",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_laddi")
 }],
 "loop": true,
 "name": &"Thornhide Protector",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_ptosf")
+}],
+"loop": true,
+"name": &"Unstable Element",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_5omts")
+}],
+"loop": true,
+"name": &"Verdant Behemoth",
 "speed": 5.0
 }, {
 "frames": [{
@@ -149,7 +253,7 @@ sprite_frames = SubResource("SpriteFrames_41336")
 [node name="CardHeroSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -12.5)
 sprite_frames = SubResource("SpriteFrames_fwp11")
-animation = &"Lupine Curse"
+animation = &"Celestial Vanguard"
 
 [node name="CardTitleLabel" type="Label" parent="."]
 anchors_preset = 15

@@ -8,6 +8,7 @@ var drag_offset = Vector2.ZERO
 @export var card_preview : NodePath
 @export var player_manager : NodePath
 @export var turn_manager : NodePath
+@export var ability_manager : NodePath
 
 var zone_manager_node = null  # Store reference to the ZoneManager instance
 var hand_manager_node = null
@@ -15,7 +16,7 @@ var battle_manager_node = null
 var card_preview_node = null
 var player_manager_node = null
 var turn_manager_node = null
-
+var ability_manager_node = null
 
 func _ready() -> void:
 	set_process_input(true)
@@ -32,11 +33,31 @@ func _ready() -> void:
 		player_manager_node = get_node(player_manager)
 	if turn_manager:
 		turn_manager_node = get_node(turn_manager)
+	if ability_manager:
+		ability_manager_node = get_node(ability_manager)
 		
 func _input(event: InputEvent) -> void:
 	# Handle mouse button press (Left Click)
+	
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			
+			 # If we have a pending ability in the ability manager:
+			if ability_manager_node.pending_ability != null:
+				var hovered_card = _get_card_under_mouse()
+				if hovered_card:
+					# Check if it's in the player's creature zone
+					var zone_name = hovered_card.get_meta("current_zone", "")
+					var card_type = hovered_card.get_meta("card_type", "")
+					if "Monster Zone" in zone_name and "Opponent" not in zone_name and card_type == "Creature":
+						# Valid target -> apply
+						ability_manager_node.apply_pending_ability_to_target(hovered_card)
+						print("🎯 Target selected:", hovered_card.name)
+					else:
+						print("❌ Invalid target for this ability")
+				return  # End target selection path, do not proceed with normal dragging
+			
 			var card = _get_card_under_mouse()
 			if card:
 				var card_zone = card.get_meta("current_zone") if card.has_meta("current_zone") else "Unknown"
@@ -134,8 +155,6 @@ func _input(event: InputEvent) -> void:
 	#if event is InputEventMouseMotion and dragged_card:
 		#var new_position = get_viewport().get_mouse_position() + drag_offset
 		#dragged_card.global_position = new_position
-
-
 
 func _get_opponent_under_mouse():
 	print("🔍 Checking for opponents under mouse...")

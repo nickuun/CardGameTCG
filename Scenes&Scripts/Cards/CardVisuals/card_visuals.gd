@@ -41,9 +41,9 @@ func set_card_data(title: String, description: String, attack: String, defense: 
 	#hero_art.play(title)
 
 func update_card_stat_visuals():
-	$DefenceLabel.text = self.get_parent().get_meta("card_defense")
+	$DefenceLabel.text = str(self.get_parent().get_meta("card_defense"))
 	if $DefenceLabel.visible == false:
 		$DefenceLabel.show()
-	$AttackLabel.text = self.get_parent().get_meta("card_attack")
+	$AttackLabel.text = str(self.get_parent().get_meta("card_attack"))
 	if $AttackLabel.visible == false:
 		$AttackLabel.show()

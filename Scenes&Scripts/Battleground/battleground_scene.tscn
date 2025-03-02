@@ -42,6 +42,7 @@ battle_manager = NodePath("../BattleManager")
 card_preview = NodePath("../../CardPreview")
 player_manager = NodePath("../PlayerManager")
 turn_manager = NodePath("../TurnManager")
+ability_manager = NodePath("../AbilityManager")
 
 [node name="DeckManager" parent="Managers" instance=ExtResource("6_gdrdj")]
 
