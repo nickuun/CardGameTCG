@@ -47,6 +47,11 @@ func draw_card(is_opponent: bool = false) -> Node:
 		var unique_id = card_id_manager.get_new_card_id()
 		new_card.set_meta("unique_id", unique_id)
 		
+		if is_opponent:
+			new_card.set_meta("owner", "opponent")
+		else:
+			new_card.set_meta("owner", "player")
+		
 		# Add the card to the scene and to the appropriate hand.
 		add_child(new_card)
 		hand_manager.add_card_to_hand(new_card, is_opponent)

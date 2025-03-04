@@ -9,6 +9,7 @@ var drag_offset = Vector2.ZERO
 @export var player_manager : NodePath
 @export var turn_manager : NodePath
 @export var ability_manager : NodePath
+@export var graveyard_manager : NodePath
 
 var zone_manager_node = null  # Store reference to the ZoneManager instance
 var hand_manager_node = null
@@ -17,6 +18,7 @@ var card_preview_node = null
 var player_manager_node = null
 var turn_manager_node = null
 var ability_manager_node = null
+var graveyard_manager_node = null
 
 func _ready() -> void:
 	set_process_input(true)
@@ -35,10 +37,11 @@ func _ready() -> void:
 		turn_manager_node = get_node(turn_manager)
 	if ability_manager:
 		ability_manager_node = get_node(ability_manager)
+	if graveyard_manager:
+		graveyard_manager_node = get_node(graveyard_manager)
 		
 func _input(event: InputEvent) -> void:
 	# Handle mouse button press (Left Click)
-	
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -50,7 +53,8 @@ func _input(event: InputEvent) -> void:
 					# Check if it's in the player's creature zone
 					var zone_name = hovered_card.get_meta("current_zone", "")
 					var card_type = hovered_card.get_meta("card_type", "")
-					if "Monster Zone" in zone_name and "Opponent" not in zone_name and card_type == "Creature":
+					if "Monster Zone" in zone_name and card_type == "Creature":
+						 #and "Opponent" not in zone_name? need conditional option - REFACTOR
 						# Valid target -> apply
 						ability_manager_node.apply_pending_ability_to_target(hovered_card)
 						print("🎯 Target selected:", hovered_card.name)
@@ -167,13 +171,16 @@ func _get_opponent_under_mouse():
 	var result = space_state.intersect_point(query)
 	print("🔎 Found", result.size(), "objects under mouse.")
 
-	if result.size() > 0:
-		print("🧐 Opponent detected under mouse:", result[0].collider.name)
-		return result[0].collider  # Return the opponent portrait
+	for res in result:
+		var node = res.collider
+		# Skip nodes that are placement zones.
+		if node.is_in_group("zones"):
+			continue
+		print("🧐 Opponent detected under mouse:", node.name)
+		return node
 	
 	print("❌ No opponents under mouse.")
 	return null
-
 
 # Utility function to check for a card under the mouse.
 func _get_card_under_mouse():
@@ -264,6 +271,11 @@ func _place_card_in_zone(card, zone):
 	var hand_manager = hand_manager_node
 	hand_manager.remove_card_from_hand(card)
 	zone.add_card_to_zone(card)
+	
+	if card.get_meta("card_type") == "Spell":
+		print('card.get_meta("card_type") == "Spell":', card.get_meta("card_type") == "Spell", "for Spell:", card.get_meta("card_type"))
+		call_deferred("resolve_spell", card)
+
 
 func _animate_card_to_zone(card, target_position: Vector2):
 	var tween = get_tree().create_tween()
@@ -286,3 +298,18 @@ func _swap_cards_in_hand(card1, card2):
 		hand_manager_node.update_hand_positions()
 	else:
 		print("❌ Swap failed: One or both cards are not in your hand.")
+
+func resolve_spell(card):
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	# After one second, move the card to the graveyard.
+	# Replace "/root/Graveyard" with your actual graveyard NodePath.
+
+	if graveyard_manager_node:
+		graveyard_manager_node.add_to_graveyard(card)
+		print("Spell resolved and sent to graveyard:", card.name)
+		card.queue_free()

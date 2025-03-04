@@ -25,12 +25,26 @@ func _ready():
 			#{"trigger": "on_death", "function": "deal_damage_to_hero"}
 		 #]}
 	#]
+	
 	var desired_player_cards = [
 		"vinegrasp_aura_009",  # ID from CSV row
 		"mosshide_bear_006",
-		"briarclaw_shaman_005",
-		"impish_trickster_011",
-		"lupine_curse_012",
+		#"briarclaw_shaman_005",
+		#"ancient_stag_007",
+		#"impish_trickster_011",
+		#"lupine_curse_012",
+		#"thornhide_protector_004",
+		#"15",
+		#"16",
+		#"11",
+		#"6",
+		#"23",
+		#"27",
+		#"25",
+		"27",
+		"27",
+		"24",
+		"24"
 	]
 	
 	for card_id in desired_player_cards:
@@ -47,9 +61,12 @@ func _ready():
 func sample_opponent_deck():
 
 	var desired_opponent_cards = [
+		#"28",
+		#"28",  
+		#"28",
 		"impish_trickster_011",
-		"impish_trickster_011",  
-		"impish_trickster_011" 
+		"impish_trickster_011",
+		"impish_trickster_011"
 	]
 
 	var sample_opponent_deck = []

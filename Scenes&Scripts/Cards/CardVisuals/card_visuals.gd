@@ -47,3 +47,15 @@ func update_card_stat_visuals():
 	$AttackLabel.text = str(self.get_parent().get_meta("card_attack"))
 	if $AttackLabel.visible == false:
 		$AttackLabel.show()
+
+func update_card_hero():
+	$CardDescriptionLabel.text = str(self.get_parent().get_meta("card_description"))
+	$CardHeroSprite.play(self.get_parent().get_meta("card_title"))
+
+func set_exhausted(ex: bool = true):
+	print("set_exhausted in card visuals")
+	if ex:
+		$ExhaustedIcon.show()
+	else:
+		$ExhaustedIcon.hide()
+		

@@ -99,7 +99,12 @@ func get_card_data() -> Dictionary:
 	}
 
 func set_exhausted(ex: bool = true):
+	print("setting exhausted")
+	$CardVisuals.set_exhausted(ex)
 	set_meta("exhausted", ex)
 
 func update_card_stat_visuals():
 	$CardVisuals.update_card_stat_visuals()
+
+func update_card_hero():
+	$CardVisuals.update_card_hero()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://n4obusigydn"]
+[gd_scene load_steps=34 format=3 uid="uid://n4obusigydn"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/Cards/CardVisuals/card_visuals.gd" id="1_bj7dw"]
 [ext_resource type="Texture2D" uid="uid://dwo3y6ej5afg5" path="res://Assets/Sprites/Cards/Bases/BlankCardColourlessTemplate.png" id="1_ifb1p"]
@@ -23,10 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://d2euiaeqctyyq" path="res://Assets/Sprites/Cards/Heros/002.png" id="13_7qphc"]
 [ext_resource type="Texture2D" uid="uid://reipyjos8x4v" path="res://Assets/Sprites/Cards/Heros/23.png" id="13_w8e7n"]
 [ext_resource type="Texture2D" uid="uid://cmiua7a51amte" path="res://Assets/Sprites/Cards/Heros/018.png" id="14_map61"]
+[ext_resource type="Texture2D" uid="uid://c2l4uvfklvcof" path="res://Assets/Sprites/Cards/Heros/27.png" id="14_shmco"]
+[ext_resource type="Texture2D" uid="uid://cadrvdwx1qigk" path="res://Assets/Sprites/Cards/Heros/29.png" id="16_oh6ti"]
 [ext_resource type="Texture2D" uid="uid://c3iecstuorf8q" path="res://Assets/Sprites/Cards/Heros/21.png" id="18_7o0ck"]
 [ext_resource type="Texture2D" uid="uid://cblxv0gumha1r" path="res://Assets/Sprites/Cards/Heros/19.png" id="19_2wc0v"]
+[ext_resource type="Texture2D" uid="uid://vcyoohlkf553" path="res://Assets/Sprites/Cards/Heros/A001.png" id="21_3y3wp"]
 [ext_resource type="Texture2D" uid="uid://cwd4tlsas8r3y" path="res://Assets/Sprites/Cards/Heros/22.png" id="22_ptosf"]
 [ext_resource type="Texture2D" uid="uid://bm2s7x2gkcynq" path="res://Assets/Sprites/Cards/Heros/14.png" id="23_5omts"]
+[ext_resource type="Texture2D" uid="uid://hqo01syadedp" path="res://Assets/Sprites/Cards/Icons/ExhaustedIcon.png" id="30_fvytv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_41336"]
 animations = [{
@@ -136,6 +140,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("14_shmco")
+}],
+"loop": true,
+"name": &"Greedy Cutpurse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_2of0j")
 }],
 "loop": true,
@@ -148,6 +160,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Impish Trickster",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_oh6ti")
+}],
+"loop": true,
+"name": &"Kaboom Goblin",
 "speed": 5.0
 }, {
 "frames": [{
@@ -188,6 +208,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Scorching Gale",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_3y3wp")
+}],
+"loop": true,
+"name": &"Small Wolf",
 "speed": 5.0
 }, {
 "frames": [{
@@ -253,7 +281,7 @@ sprite_frames = SubResource("SpriteFrames_41336")
 [node name="CardHeroSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -12.5)
 sprite_frames = SubResource("SpriteFrames_fwp11")
-animation = &"Celestial Vanguard"
+animation = &"Greedy Cutpurse"
 
 [node name="CardTitleLabel" type="Label" parent="."]
 anchors_preset = 15
@@ -350,3 +378,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 1
+
+[node name="ExhaustedIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-50, -15)
+texture = ExtResource("30_fvytv")

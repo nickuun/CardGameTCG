@@ -1,27 +1,28 @@
 flame_imp_001,Flame Imp,Creature,,3,2,3,on_played:heal_all_allies
 fireball_002,Fireball,Spell,Deal 1 damage to a target.,-,-,1,on_played:heal_all_allies|on_death:deal_damage_to_hero
-healing_touch_003,Healing Touch,Spell,Give 2 health to a target.,-,-,2,on_cast:buff_hero
-thornhide_protector_004,Thornhide Protector,Creature,Resilience: Gain +0/+2.,3,2,2,
+healing_touch_003,Healing Touch,Spell,Give 2 health to a target.,-,-,2,
+thornhide_protector_004,Thornhide Protector,Creature,Resilience: Gain +0/+2.,3,2,2,on_attacked:defence_up(2)
 briarclaw_shaman_005,Briarclaw Shaman,Creature,Warcry: Give target +1/+1.,2,2,2,on_played:give_target_buff
-mosshide_bear_006,Mosshide Bear,Creature,Lunge: Gain +1/+1.,3,2,3,
-ancient_stag_007,Ancient Stag,Creature,Awaken: Gain 1 life.,4,4,4,
+mosshide_bear_006,Mosshide Bear,Creature,Lunge: Gain +1/+1.,3,2,3,on_attack:buff_self(1)
+ancient_stag_007,Ancient Stag,Creature,Awaken: Gain 1 life.,4,4,4,on_turn_start:gain_life
 wilden_domain_008,Wilden Domain,Enchantment,Dread: Create a 2/2 Wolf.,-,-,3,
 vinegrasp_aura_009,Vinegrasp Aura,Enchantment,Enchant creature. Target gets +3/+3.,-,-,2,on_played:give_target_buff(3)
 call_of_the_ancients010,Call of the Ancients,Enchantment,Active(3): Create a 5/5 creature.,-,-,5,
-impish_trickster_011,Impish Trickster,Creature,Surge: +1/+0. (2 hero dmg),1,1,1,on_death:deal_damage_to_hero(2)
-lupine_curse_012,Lupine Curse,Enchantment,Turn a creature into a 2/2 wolf.,-,-,4,on_played:turn_into_2_2_wolf
+impish_trickster_011,Impish Trickster,Creature,Surge: +1/+0.,1,1,1,on_ally_entered:attack_up(1)
+lupine_curse_012,Lupine Curse,Spell,Turn a creature into a 2/2 wolf.,-,-,4,on_played:turn_into_2_2_wolf
 13,Ashen Phoenix,Creature,Last Breath: Return this to your hand.,2,2,3,
-14,Verdant Behemoth,Creature,Enduring,2,3,2,
-15,Ancient Grovekeeper,Creature,Awaken: Both players gain 1 life.,1,4,3,
-16,Dark Pact,Spell,Draw 2 cards. Lose 3 life.,-,-,2,
-17,Battle Frenzy,Spell,Your creatures gain +1 Attack this turn.,-,-,3,
+14,Verdant Behemoth,Creature,Glory: Double attack.,3,5,5,
+15,Ancient Grovekeeper,Creature,Awaken: Both players gain 1 life.,1,4,3,on_turn_start:both_gain_life(1)
+16,Dark Pact,Spell,Draw 2 cards. Lose 3 life.,-,-,2,on_played:draw_card(2)|on_played:deal_damage_to_self(3)
+17,Battle Frenzy,Spell,Your creatures gain +1 Attack.,-,-,5,
 18,Scorching Gale,Spell,All creatures take 1 damage.,-,-,3,
-19,Nature’s Resilience,Enchantment,Give 2 creatures +1 defense.,-,-,2,
-20,Frozen Winds,Spell,Target 2 creatures: They are exhuasted next turn.,-,-,3,
-21,Mystic Tome,Spell,Draw 2 cards.,-,-,2,
+19,Nature’s Resilience,Enchantment,Give 1 creature +4 defense.,-,-,2,
+21,Mystic Tome,Spell,Draw 2 cards.,-,-,2,on_played:draw_card(2)
 22,Unstable Element,Spell,Draw a card - then discard a card.,-,-,1,
-23,Flameborn Rager,Creature,Lunge: Gain +1/0.,4,2,3,
-24,Celestial Vanguard,Creature,Strike: Restore 1 Health to your hero.,3,3,4,
-25,Stormcaller Mage,Creature,Warcry: Draw a card.,3,2,4,
+23,Flameborn Rager,Creature,Lunge: Gain +1/0.,4,2,3,on_attack:attack_up(1)
+24,Celestial Vanguard,Creature,Strike: Restore 1 Health to your hero.,3,3,4,on_attack:gain_life
+25,Stormcaller Mage,Creature,Warcry: Draw a card.,3,2,4,on_played:draw_card
 26,Hunter's Instinct,Spell,Draw a card for each creature your opponent controls.,-,-,4,
-27,Greedy Cutpurse,Creature,Glory: Draw 1 card.,1,3,3,
+27,Greedy Cutpurse,Creature,Glory: Draw 1 card.,1,3,3,on_kill:draw_card
+28,Kaboom Goblin,Creature,Last Breath: Deal 2 damage to enemy hero.,1,3,3,on_death:deal_damage_to_hero(2)
+29,Greedy Cutpurse,Creature,Direct Attack: Draw 1 card.,1,1,3,on_direct_attack:direct_attack_draw

@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Scenes&Scripts/Managers/ZoneManager/zone.gd" id="1_wg6nx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpwmb"]
-size = Vector2(292, 62)
+size = Vector2(1409, 162.5)
 
 [node name="Zone" type="Area2D"]
 script = ExtResource("1_wg6nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26.5, -8)
 shape = SubResource("RectangleShape2D_qpwmb")

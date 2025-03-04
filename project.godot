@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 CardDatabase="*res://Scenes&Scripts/Cards/CardDatabase/Singleton/CardDatabase.gd"
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+MultiplayerActionInterpreter="*res://Scenes&Scripts/Multiplayer/MultiplayerActionInterpreter.gd"
 
 [display]
 

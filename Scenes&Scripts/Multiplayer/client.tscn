@@ -1,0 +1,180 @@
+[gd_scene load_steps=14 format=3 uid="uid://cax47ua65uu6j"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/Multiplayer/client.gd" id="1_ja03s"]
+[ext_resource type="Texture2D" uid="uid://cix3g2iem18qk" path="res://Assets/Sprites/UI/Menu/MainMenuPannel.png" id="2_mboso"]
+[ext_resource type="FontFile" uid="uid://f1ltt148ytjw" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_w3fkh"]
+[ext_resource type="FontFile" uid="uid://dkqghjes7oemv" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="4_ld7lm"]
+[ext_resource type="Texture2D" uid="uid://dnlwgcndrgubr" path="res://Assets/Sprites/UI/Menu/MainMenuButton.png" id="5_ymdpu"]
+[ext_resource type="Texture2D" uid="uid://dr0cdebn0lgqn" path="res://Assets/Sprites/UI/Menu/MainMenuTextEdit.png" id="6_be0mp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np4ny"]
+texture = ExtResource("6_be0mp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_etg6a"]
+texture = ExtResource("6_be0mp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_85ty2"]
+texture = ExtResource("6_be0mp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kop1y"]
+texture = ExtResource("6_be0mp")
+
+[sub_resource type="Animation" id="Animation_7e6yn"]
+resource_name = "ShowMultiplayer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1.8025),
+"update": 0,
+"values": [Vector2(540, 1181), Vector2(540, 310)]
+}
+
+[sub_resource type="Animation" id="Animation_yt16s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(486, 310)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_clbaa"]
+_data = {
+"RESET": SubResource("Animation_yt16s"),
+"ShowMultiplayer": SubResource("Animation_7e6yn")
+}
+
+[node name="Client" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ja03s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 486.0
+offset_top = 310.0
+offset_right = 1373.0
+offset_bottom = 796.0
+texture = ExtResource("2_mboso")
+
+[node name="WelcomeMessage" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 296.0
+offset_right = -544.0
+offset_bottom = -474.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_w3fkh")
+text = "Welcome!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoginButton" type="Button" parent="TextureRect"]
+offset_left = 587.0
+offset_top = 346.0
+offset_right = 780.0
+offset_bottom = 453.0
+theme_override_fonts/font = ExtResource("4_ld7lm")
+theme_override_font_sizes/font_size = 36
+text = "Log in"
+icon = ExtResource("5_ymdpu")
+flat = true
+icon_alignment = 1
+
+[node name="EmailInput" type="LineEdit" parent="TextureRect"]
+texture_filter = 1
+offset_left = 108.0
+offset_top = 111.0
+offset_right = 790.0
+offset_bottom = 193.0
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ld7lm")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_np4ny")
+theme_override_styles/normal = SubResource("StyleBoxTexture_etg6a")
+text = "test@gmail.com"
+placeholder_text = "test@gmail.com"
+
+[node name="PasswordInput" type="LineEdit" parent="TextureRect"]
+offset_left = 105.0
+offset_top = 234.0
+offset_right = 789.0
+offset_bottom = 314.0
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ld7lm")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_85ty2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kop1y")
+text = "password"
+placeholder_text = "password"
+
+[node name="UserAccountText" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 118.0
+offset_top = 356.0
+offset_right = -703.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_w3fkh")
+text = "Please log in:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisplayNameText" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = 657.0
+offset_right = -1212.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_w3fkh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_clbaa")
+}
+
+[connection signal="button_up" from="TextureRect/LoginButton" to="." method="LoginButtonPressed"]

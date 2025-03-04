@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://blhafme7bkerx"]
+[gd_scene load_steps=3 format=3 uid="uid://blhafme7bkerx"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/Managers/ability_manager.gd" id="1_yjgdp"]
+[ext_resource type="FontFile" uid="uid://f1ltt148ytjw" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_6u3r0"]
 
 [node name="AbilityManager" type="Node2D" groups=["AbilityManager"]]
+texture_filter = 1
 script = ExtResource("1_yjgdp")
+
+[node name="CardTitleLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 713.0
+offset_top = 747.0
+offset_right = 815.0
+offset_bottom = 759.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_6u3r0")
+text = "Select a Target"
+horizontal_alignment = 1
+vertical_alignment = 1

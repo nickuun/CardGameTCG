@@ -43,6 +43,7 @@ card_preview = NodePath("../../CardPreview")
 player_manager = NodePath("../PlayerManager")
 turn_manager = NodePath("../TurnManager")
 ability_manager = NodePath("../AbilityManager")
+graveyard_manager = NodePath("../GraveyardManager")
 
 [node name="DeckManager" parent="Managers" instance=ExtResource("6_gdrdj")]
 
@@ -59,6 +60,7 @@ player_manager_path = NodePath("../PlayerManager")
 [node name="CardIDManager" parent="Managers" instance=ExtResource("9_y1wc3")]
 
 [node name="ZoneManager" parent="Managers" instance=ExtResource("10_08u0q")]
+position = Vector2(27, 0)
 
 [node name="BattleManager" parent="Managers" instance=ExtResource("11_uy8ae")]
 zone_manager_path = NodePath("../ZoneManager")
@@ -96,6 +98,7 @@ scale = Vector2(-1, 1)
 
 [node name="AbilityManager" parent="Managers" instance=ExtResource("14_fteyl")]
 player_manager = NodePath("../PlayerManager")
+card_manager = NodePath("../CardManager")
 
 [node name="GraveyardManager" parent="Managers" instance=ExtResource("15_q8quo")]
 card_scene = ExtResource("2_wt3l7")
@@ -104,6 +107,7 @@ card_scene = ExtResource("2_wt3l7")
 card_manager_path = NodePath("../CardManager")
 deck_manager_path = NodePath("../DeckManager")
 player_manager_path = NodePath("../PlayerManager")
+zone_manager_path = NodePath("../ZoneManager")
 
 [node name="Button" type="Button" parent="Managers/TurnManager"]
 offset_left = 1789.0

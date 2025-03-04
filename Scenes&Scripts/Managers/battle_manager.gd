@@ -58,6 +58,7 @@ func attempt_attack(target_card):
 # 📌 Applies combat mechanics
 func apply_combat(attacker, defender):
 	attacker.trigger_ability("on_attack")
+	defender.trigger_ability("on_attacked")
 	
 	var attacker_attack = float(attacker.get_meta("card_attack"))
 	var defender_attack = float(defender.get_meta("card_attack"))
@@ -72,7 +73,8 @@ func apply_combat(attacker, defender):
 	attacker.play_attack_animation()
 	defender.play_defend_animation()
 	
-	attacker.set_meta("exhausted", true)
+	attacker.set_exhausted(true)
+	#attacker.set_meta("exhausted", true)
 
 	# Check if attacker dies
 	if attacker_health <= 0:
@@ -85,6 +87,7 @@ func apply_combat(attacker, defender):
 	# Check if defender dies
 	if defender_health <= 0:
 		print("💀", defender.name, "was destroyed!")
+		attacker.trigger_ability("on_kill")
 		defender.play_death_animation()
 		defender.trigger_ability("on_death")
 		graveyard_manager.add_to_graveyard(defender)
@@ -97,11 +100,16 @@ func apply_combat(attacker, defender):
 	defender.update_card_stat_visuals()
 
 func direct_attack():
+	
 	if not attacking_card:
 		print("❌ No attacker selected!")
 		return
-
+	if attacking_card.get_meta("exhausted") == true:
+		print("❌ Attacker is exhausted!")
+		return
 	print("⚔️", attacking_card.name, "attacks opponent directly!")
+	
+	attacking_card.trigger_ability("on_attack")
 	
 	var attack_value = attacking_card.get_meta("card_attack")
 
@@ -113,6 +121,6 @@ func direct_attack():
 
 	# Play attack animation
 	attacking_card.play_attack_animation()
-
+	attacking_card.set_exhausted(true)
 	# Reset attacker
 	attacking_card = null

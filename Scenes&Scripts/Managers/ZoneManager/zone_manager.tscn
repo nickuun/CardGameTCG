@@ -20,7 +20,7 @@ collision_mask = 2
 zone_name = "Opponent Monster Zone"
 
 [node name="Player Monster Zone" parent="." groups=["zones"] instance=ExtResource("1_ucpmm")]
-position = Vector2(897, 663)
+position = Vector2(897, 681)
 collision_layer = 2
 collision_mask = 2
 zone_name = "Player Monster Zone"

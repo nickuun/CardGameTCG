@@ -10,6 +10,11 @@ func add_card_to_zone(card):
 	if card in cards_in_zone:
 		return
 
+	if self.zone_name == "Player Monster Zone":
+		for c in cards_in_zone:
+			if c != card:
+				c.trigger_ability("on_ally_entered")
+
 	var insert_index = _get_insert_index(card.global_position)
 	cards_in_zone.insert(insert_index, card)
 	card.set_meta("current_zone", zone_name)
