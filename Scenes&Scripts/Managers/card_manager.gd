@@ -51,6 +51,7 @@ func draw_card(is_opponent: bool = false) -> Node:
 			new_card.set_meta("owner", "opponent")
 		else:
 			new_card.set_meta("owner", "player")
+			new_card.flip_card()
 		
 		# Add the card to the scene and to the appropriate hand.
 		add_child(new_card)
@@ -68,10 +69,12 @@ func sync_opponent_card_swap(card1_id: int, card2_id: int):
 	print("🔄 Synced opponent card swap:", card1_id, "<->", card2_id)
 
 func sync_opponent_card_placement(card_id: int, zone_name: String):
+	
 	var card = hand_manager.get_card_by_id(card_id, true)
 	player_manager.subtract_mana(int(card.get_meta("card_mana_cost")), true)
 	var zone = zone_manager.get_zone_by_name(zone_name)
 	if card and zone:
+		card.flip_card()
 		hand_manager.remove_card_from_hand(card, true)
 		zone.add_card_to_zone(card)
 		print("🃏 Synced opponent card placement:", card.name, "->", zone_name)

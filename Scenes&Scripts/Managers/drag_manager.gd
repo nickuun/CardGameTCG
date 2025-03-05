@@ -141,9 +141,10 @@ func _input(event: InputEvent) -> void:
 				# Assume the hovered card has a method get_card_data() that returns a dictionary.
 				var data = hovered_card.get_card_data()  # e.g., {"title": "Flame Imp", "description": "...", "attack": "3", ...}
 				# Update the preview node with the card's details.
-				card_preview_node.set_card_data(data.title, data.description, data.attack, data.defense, data.cost)
-				# Optionally, you might want to show the preview node if it was hidden.
-				card_preview_node.show()
+				if hovered_card.is_flipped:
+					card_preview_node.set_card_data(data.title, data.description, data.attack, data.defense, data.cost)
+					# Optionally, you might want to show the preview node if it was hidden.
+					card_preview_node.show()
 			else:
 				# If no card is hovered, hide the preview.
 				card_preview_node.hide()
@@ -267,6 +268,11 @@ func _place_card_in_zone(card, zone):
 		player_manager_node.update_mana_display(false)
 		
 	# 📌 Passed checks, remove card from hand and place in zone
+	#if card.get_meta("owner") == "opponent":
+		#card.flip_card()
+	#else:
+		#print("not equal: ", card.get_meta("owner") == "opponent", " sdasdasdasd " , card.get_meta("owner"))
+	
 	card.trigger_ability("on_played")
 	var hand_manager = hand_manager_node
 	hand_manager.remove_card_from_hand(card)
@@ -275,7 +281,6 @@ func _place_card_in_zone(card, zone):
 	if card.get_meta("card_type") == "Spell":
 		print('card.get_meta("card_type") == "Spell":', card.get_meta("card_type") == "Spell", "for Spell:", card.get_meta("card_type"))
 		call_deferred("resolve_spell", card)
-
 
 func _animate_card_to_zone(card, target_position: Vector2):
 	var tween = get_tree().create_tween()

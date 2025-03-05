@@ -51,8 +51,8 @@ func add_to_graveyard(card):
 		"card_mana_cost": card.get_meta("card_mana_cost"),
 		"abilities": card.get_meta("abilities")
 	}
-
-	graveyard_cards.push_front(card_data)  # FILO - newest cards at front
+	for i in 5:
+		graveyard_cards.push_front(card_data)  # FILO - newest cards at front
 	card.queue_free()  # Free the original card
 	update_graveyard_display()
 
@@ -93,6 +93,7 @@ func _display_graveyard_cards():
 		var card_instance = card_scene.instantiate()
 
 		# Set up the card with stored metadata
+		card_instance.flip_card()
 		card_instance.set_card(
 			card_data["card_id"],
 			card_data["card_title"],

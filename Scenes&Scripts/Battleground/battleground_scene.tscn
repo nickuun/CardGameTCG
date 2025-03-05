@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bavgboo2qg8vq"]
+[gd_scene load_steps=24 format=3 uid="uid://bavgboo2qg8vq"]
 
 [ext_resource type="PackedScene" uid="uid://d2vlwcbpo2tkl" path="res://Scenes&Scripts/Tilemaps/battlegreound_tilemap.tscn" id="1_ljl2t"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Battleground/battleground_scene.gd" id="1_uxmb2"]
@@ -18,6 +18,42 @@
 [ext_resource type="PackedScene" uid="uid://cti4t2l22kqmo" path="res://Scenes&Scripts/Managers/graveyard_manager.tscn" id="15_q8quo"]
 [ext_resource type="PackedScene" uid="uid://n4obusigydn" path="res://Scenes&Scripts/Cards/CardVisuals/card_visuals.tscn" id="16_me55n"]
 [ext_resource type="PackedScene" uid="uid://ckbnmuitp3461" path="res://Scenes&Scripts/Managers/turn_manager.tscn" id="17_8inkq"]
+[ext_resource type="FontFile" uid="uid://dwptamnlp76v8" path="res://Assets/Fonts/Kenney Mini Square Mono.ttf" id="18_7vg6l"]
+[ext_resource type="Texture2D" uid="uid://dnlwgcndrgubr" path="res://Assets/Sprites/UI/Menu/MainMenuButton.png" id="19_khph6"]
+[ext_resource type="Texture2D" uid="uid://0gh0oxil77xo" path="res://Assets/Sprites/Banners/YourTurnBanner.png" id="20_a8in6"]
+
+[sub_resource type="Animation" id="Animation_pfu3c"]
+resource_name = "ShowTurnBanner"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Managers/TurnManager/Node2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Managers/TurnManager/Node2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr2mt"]
+_data = {
+"ShowTurnBanner": SubResource("Animation_pfu3c")
+}
 
 [node name="BattlegroundScene" type="Node2D"]
 texture_filter = 1
@@ -29,13 +65,16 @@ script = ExtResource("1_uxmb2")
 
 [node name="CheatManager" parent="Managers" instance=ExtResource("4_v4vkh")]
 z_index = 10
+texture_filter = 1
 offset_left = 7.0
 offset_top = 1030.0
 offset_right = 7.0
 offset_bottom = 1030.0
+turn_manager = NodePath("../TurnManager")
 card_manager = NodePath("../CardManager")
 
 [node name="DragManager" parent="Managers" instance=ExtResource("5_smh5e")]
+texture_filter = 1
 zone_manager = NodePath("../ZoneManager")
 hand_manager = NodePath("../HandManager")
 battle_manager = NodePath("../BattleManager")
@@ -47,9 +86,17 @@ graveyard_manager = NodePath("../GraveyardManager")
 
 [node name="DeckManager" parent="Managers" instance=ExtResource("6_gdrdj")]
 
+[node name="PlayerDeck" parent="Managers/DeckManager" index="0"]
+position = Vector2(153, 171)
+
+[node name="OpponentDeck" parent="Managers/DeckManager" index="1"]
+position = Vector2(1781, 897)
+
 [node name="HandManager" parent="Managers" instance=ExtResource("7_mm7hl")]
+texture_filter = 1
 
 [node name="CardManager" parent="Managers" instance=ExtResource("8_f640m")]
+texture_filter = 1
 deck_manager_path = NodePath("../DeckManager")
 hand_manager_path = NodePath("../HandManager")
 card_id_manager_path = NodePath("../CardIDManager")
@@ -58,42 +105,49 @@ battle_manager_path = NodePath("../BattleManager")
 player_manager_path = NodePath("../PlayerManager")
 
 [node name="CardIDManager" parent="Managers" instance=ExtResource("9_y1wc3")]
+texture_filter = 1
 
 [node name="ZoneManager" parent="Managers" instance=ExtResource("10_08u0q")]
+texture_filter = 1
 position = Vector2(27, 0)
 
 [node name="BattleManager" parent="Managers" instance=ExtResource("11_uy8ae")]
+texture_filter = 1
 zone_manager_path = NodePath("../ZoneManager")
 hand_manager_path = NodePath("../HandManager")
 player_manager_path = NodePath("../PlayerManager")
 graveyard_manager_path = NodePath("../GraveyardManager")
 
 [node name="PlayerManager" parent="Managers" instance=ExtResource("12_20tsm")]
+texture_filter = 1
 player_healthbar = NodePath("PlayerPortrait/Healthbar/TextureProgressBar")
 opponent_healthbar = NodePath("OpponentPortrait/Healthbar/TextureProgressBar")
 player_manabar = NodePath("ManaDisplay")
 opponent_manabar = NodePath("OpponentManaDisplay")
 
 [node name="PlayerPortrait" parent="Managers/PlayerManager" instance=ExtResource("13_rif6x")]
-position = Vector2(23, 904)
+position = Vector2(3, 827)
+scale = Vector2(1.5, 1.5)
 
 [node name="OpponentPortrait" parent="Managers/PlayerManager" instance=ExtResource("13_rif6x")]
-position = Vector2(1746, 21)
+position = Vector2(1675, 13)
+scale = Vector2(1.5, 1.5)
 
 [node name="PlayerHeroBorder" parent="Managers/PlayerManager/OpponentPortrait" index="0"]
-offset_left = 38.0
-offset_top = -3.0
-offset_right = 141.0
-offset_bottom = 106.0
+offset_left = 44.6667
+offset_top = 0.666667
+offset_right = 147.667
+offset_bottom = 109.667
 
 [node name="CollisionShape2D" parent="Managers/PlayerManager/OpponentPortrait" index="4"]
-position = Vector2(89, 51)
+position = Vector2(95.6667, 54.6667)
 
 [node name="ManaDisplay" parent="Managers/PlayerManager" instance=ExtResource("13_nby0t")]
-position = Vector2(133, 962)
+position = Vector2(11, 845)
+rotation = -1.5708
 
 [node name="OpponentManaDisplay" parent="Managers/PlayerManager" instance=ExtResource("13_nby0t")]
-position = Vector2(1784, 9)
+position = Vector2(1764, 8)
 scale = Vector2(-1, 1)
 
 [node name="AbilityManager" parent="Managers" instance=ExtResource("14_fteyl")]
@@ -103,25 +157,74 @@ card_manager = NodePath("../CardManager")
 [node name="GraveyardManager" parent="Managers" instance=ExtResource("15_q8quo")]
 card_scene = ExtResource("2_wt3l7")
 
+[node name="GraveyardPile" parent="Managers/GraveyardManager" index="0"]
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 217.0
+offset_bottom = 468.0
+
+[node name="PlayerGraveyard" parent="Managers/GraveyardManager" index="1"]
+offset_left = 1720.0
+offset_top = 592.0
+offset_right = 1837.0
+offset_bottom = 760.0
+
 [node name="TurnManager" parent="Managers" instance=ExtResource("17_8inkq")]
+texture_filter = 1
 card_manager_path = NodePath("../CardManager")
 deck_manager_path = NodePath("../DeckManager")
 player_manager_path = NodePath("../PlayerManager")
 zone_manager_path = NodePath("../ZoneManager")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Managers/TurnManager"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_gr2mt")
+}
+
 [node name="Button" type="Button" parent="Managers/TurnManager"]
-offset_left = 1789.0
-offset_top = 513.0
-offset_right = 1863.0
-offset_bottom = 544.0
-text = "EndTurn"
+texture_filter = 1
+offset_left = 1683.0
+offset_top = 470.0
+offset_right = 1876.0
+offset_bottom = 577.0
+theme_override_fonts/font = ExtResource("18_7vg6l")
+text = "End Turn"
+icon = ExtResource("19_khph6")
+flat = true
+icon_alignment = 1
+
+[node name="Node2D2" type="Node2D" parent="Managers/TurnManager"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(950, 524)
+
+[node name="Node2D" type="Node2D" parent="Managers/TurnManager/Node2D2"]
+
+[node name="TextureRect" type="TextureRect" parent="Managers/TurnManager/Node2D2/Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -91.0
+offset_right = 173.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("20_a8in6")
+metadata/_edit_use_anchors_ = true
 
 [node name="CardPreview" parent="." groups=["CardPreview"] instance=ExtResource("16_me55n")]
 visible = false
+z_index = 1
 position = Vector2(280, 524)
 scale = Vector2(3, 3)
 
 [connection signal="button_up" from="Managers/TurnManager/Button" to="Managers/TurnManager" method="on_end_turn_pressed"]
 
+[editable path="Managers/DeckManager"]
 [editable path="Managers/PlayerManager/PlayerPortrait"]
 [editable path="Managers/PlayerManager/OpponentPortrait"]
+[editable path="Managers/GraveyardManager"]

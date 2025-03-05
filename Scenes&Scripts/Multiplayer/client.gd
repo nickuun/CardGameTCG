@@ -36,7 +36,7 @@ func _ready() -> void:
 	#DisplaynameText.text = account.user.displayname
 	#print(account) 
 	
-	pass # Replace with function body.
+	$AnimationPlayer.play("ShowMultiplayer")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,6 +91,7 @@ func LoginButtonPressed() -> void:
 	#$UserAccountText.text = account.user.username
 	$TextureRect/UserAccountText.text = "Logged in, welcome:"
 	$TextureRect/DisplayNameText.text = account.user.display_name
+	on_login()
 	
 	setupMultiplayerBridge()
 	
@@ -306,3 +307,6 @@ func printEverything():
 	print(createdMatch)
 	print("createdMatch value:", createdMatch)
 	print("Instance ID:", self.get_instance_id())
+	
+func on_login():
+	$AnimationPlayer.play("ShowSearchButton")

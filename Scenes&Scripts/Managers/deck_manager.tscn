@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk8yxgt2kwogk"]
+[gd_scene load_steps=3 format=3 uid="uid://bk8yxgt2kwogk"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/Managers/deck_manager.gd" id="1_dw8c7"]
+[ext_resource type="Texture2D" uid="uid://dxyt7t5sfulaq" path="res://Assets/Sprites/Cards/Backs/Premades/PremadeBlack.png" id="2_sr4lv"]
 
 [node name="DeckManager" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_dw8c7")
+
+[node name="PlayerDeck" type="Sprite2D" parent="."]
+position = Vector2(142, 171)
+texture = ExtResource("2_sr4lv")
+
+[node name="OpponentDeck" type="Sprite2D" parent="."]
+position = Vector2(1784, 902)
+texture = ExtResource("2_sr4lv")

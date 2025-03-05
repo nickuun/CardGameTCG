@@ -1,6 +1,8 @@
 extends Control
 
 @onready var input_field: TextEdit = $TextEdit
+
+@export var turn_manager: NodePath
 @export var card_manager: NodePath
 
 var command_history: Array = []
@@ -62,6 +64,7 @@ var command_map: Dictionary = {
 			print("❌ Not enough creatures in zones for battle!"),
 	
 	"hover_card": func(): print("CHEATING"),
+	"end_turn": func():get_node(turn_manager).end_turn(),
 	"give_mana": func(): print("CHEATING")
 }
 

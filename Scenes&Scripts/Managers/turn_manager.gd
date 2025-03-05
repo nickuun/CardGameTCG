@@ -21,16 +21,23 @@ func _ready():
 	
 # Called by the End Turn Button's "pressed" signal.
 func on_end_turn_pressed():
-	end_turn()
+	if is_player_turn:
+		end_turn()
+		$Button.disabled = true
+	else:
+		print("Can't end opponent's turn!")
 
 func end_turn():
 	print("Ending turn for ", is_player_turn,  " Player" )
 	is_player_turn = !is_player_turn
+
 	start_turn()
 
 func start_turn():
 	
 	if is_player_turn:
+		$AnimationPlayer.play("ShowTurnBanner")
+		$Button.disabled = false
 		for card in zone_manager.get_zone_by_name("Player Monster Zone").cards_in_zone:
 			card.trigger_ability("on_turn_start")
 		print("Starting player's turn")

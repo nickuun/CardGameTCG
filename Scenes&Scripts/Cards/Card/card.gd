@@ -12,12 +12,14 @@ var card_description
 var card_attack
 var card_defense
 var card_mana_cost
-
+var is_flipped = false
 # (Optional) Signal to notify when dragging starts or ends.
 signal drag_started
 signal drag_ended
 
 func _ready():
+	$CardBack.show()
+	$CardVisuals.hide()
 	set_exhausted(false)
 	logic.setup(self)  # Let the logic script reference this card
 
@@ -108,3 +110,7 @@ func update_card_stat_visuals():
 
 func update_card_hero():
 	$CardVisuals.update_card_hero()
+
+func flip_card():
+	$AnimationPlayer.play("Flip")
+	is_flipped = true
