@@ -98,12 +98,18 @@ func _input(event: InputEvent) -> void:
 
 					# Attack opponent monster
 					if "Opponent Monster Zone" in target_zone:
-						print("🔥 Attacking", target_card.name, "with", battle_manager_node.attacking_card.name)
-						battle_manager_node.attempt_attack(target_card)
+						if turn_manager_node.is_player_turn:
+							print("🔥 Attacking", target_card.name, "with", battle_manager_node.attacking_card.name)
+							battle_manager_node.attempt_attack(target_card)
+						else:
+							print("Cant attack on opponent turn")
 				
 				elif target_opponent:
-					print("🔥 Direct attack on opponent!")
-					battle_manager_node.direct_attack()
+					if turn_manager_node.is_player_turn:
+						print("🔥 Direct attack on opponent!")
+						battle_manager_node.direct_attack()
+					else:
+						print("Cant attack on opponent turn")
 				
 				# Reset attacker on release
 				battle_manager_node.attacking_card = null

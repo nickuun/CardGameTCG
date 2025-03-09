@@ -17,7 +17,7 @@ signal onStartGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	client = Nakama.create_client("defaultkey", "1a72-41-10-6-137.ngrok-free.app", 443, "https")
+	client = Nakama.create_client("defaultkey", "0020-41-10-6-137.ngrok-free.app", 443, "https")
 	##client = Nakama.create_client("defaultkey", "127.0.0.1", 7350, "http") #httpd ehrn when change to ngrok
 	#session = await client.authenticate_email_async("test@gmail.com", "password")
 	#socket = Nakama.create_socket_from(client)
@@ -72,7 +72,7 @@ func LoginButtonPressed() -> void:
 	$TextureRect/UserAccountText.text = "Logging in..."
 	$TextureRect/LoginButton.disabled = true
 	#client = Nakama.create_client("defaultkey", "127.0.0.1", 7350, "http") #httpd ehrn when change to ngrok
-	session = await client.authenticate_email_async("test@gmail.com", "password")
+	session = await client.authenticate_email_async($TextureRect/EmailInput.text, $TextureRect/PasswordInput.text)
 	
 	#session = await client.authenticate_email_async($Panel2/EmailInput.text,$Panel2/PasswordInput.text)
 #	
@@ -86,7 +86,10 @@ func LoginButtonPressed() -> void:
 	socket.received_match_presence.connect(onMatchPresence)
 	socket.received_match_state.connect(onMatchState)	
 
-	updateUserInfo("test", "testDisplay")
+
+	#updateUserInfo("test", "testDisplay")
+	
+	
 	var account = await client.get_account_async(session)
 	#$UserAccountText.text = account.user.username
 	$TextureRect/UserAccountText.text = "Logged in, welcome:"
